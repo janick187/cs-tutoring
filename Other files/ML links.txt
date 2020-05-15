@@ -1,0 +1,5 @@
+ROC Curve --> https://st2.ning.com/topology/rest/1.0/file/get/1341805045?profile=original
+Naive Bayes --> https://www.fromthegenesis.com/naive-bayes/
+k-nearest neighbour --> https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/
+axis=0 vs. axis=1 --> https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean#comment33618171_22149930
+Precision, Recall, F1 score --> https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9
