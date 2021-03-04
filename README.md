@@ -1,3 +1,4 @@
-# cs-tutoring
+# HSG FCS-Tutoring
 
-Welcome, here you find all necessary files.
+Welcome! In this repository you can find additional exercises and solutions. 
+Also check out the overview page: https://fcs-overview.herokuapp.com/
