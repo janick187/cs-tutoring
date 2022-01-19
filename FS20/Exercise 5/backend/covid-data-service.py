@@ -12,6 +12,7 @@ The COVID data is extracted from Johns Hopkins University over an external API.
 from flask import Flask, request, Response, render_template
 import requests
 import json
+from datetime import date
 
 # create a Flask app
 app = Flask(__name__)
@@ -26,7 +27,8 @@ def sayHello():
 def getCountryStats():
     
     # the api's ressource from where the COVID data is obtained
-    url = "https://covidapi.info/api/v1/country/{}/latest".format(request.args.get('country'))
+    url = 'https://coronavirus-19-api.herokuapp.com/countries/{}'.format(request.args.get('country'))
+    # url = "https://covidapi.info/api/v1/country/{}/latest".format(request.args.get('country'))
     
     # execute a HTTP GET request to get the data
     response = requests.get(url)
@@ -36,22 +38,26 @@ def getCountryStats():
         
         # convert received json data into a python dictionary
         data_dict = response.json()
+        print(data_dict)
         
         # extract and store the data in local variables
-        date = list(data_dict['result'].items())[0][0]
-        infected = data_dict['result'][date]['confirmed']
-        deaths = data_dict['result'][date]['deaths']
-        recovered = data_dict['result'][date]['recovered']
+        today = date.today()
+        today = today.strftime("%d/%m/%Y")
+        infected = data_dict['cases']
+        deaths = data_dict['deaths']
+        recovered = data_dict['recovered']
         mortality = round((deaths * 100) / infected, 2)
-        
+   
         # create dictionary with all data which should be sent back to the front-end / sender of the request
         data_dict = {
-            'updated': date,
+            'updated': today,
             'infected' : infected,
             'deaths' : deaths,
             'recovered' : recovered,
             'mortality' : mortality
             }
+        
+        print(data_dict)
         
         # convert python dictionary to json
         json_data = json.dumps(data_dict)
